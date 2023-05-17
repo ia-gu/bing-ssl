@@ -1,0 +1,7 @@
+name: flowers
+budget: 0
+rounds: 1
+initial_points: 1000
+classes: 102
+train: /localdata/flowers/train
+test: /localdata/flowers/test

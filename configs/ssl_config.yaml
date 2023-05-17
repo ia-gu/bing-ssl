@@ -1,0 +1,32 @@
+# @package _group_
+
+mlflow_runname: pretraining
+
+train_parameters: 
+  lr: 0.05
+  momentum: 0.9
+  decay: 0.0005
+  batch_size: 512
+  seed: 9999
+  start_epoch: 0
+  n_epoch: 800
+  dim: 2048
+  pred_dim: 512
+  fix_pred_lr: true
+  step: 10
+  num_search: 10
+  num_images: 10
+
+
+defaults: 
+  - dataset: flower
+log_path: logs/${mlflow_runname}/${dataset.name}/${train_parameters.seed}/${now:%Y-%m-%d_%H-%M-%S}
+weight_path: logs/${mlflow_runname}/${dataset.name}/${train_parameters.seed}/${now:%Y-%m-%d_%H-%M-%S}/weights
+additional_data_path: none
+
+hydra:
+  run:
+    dir: logs/${mlflow_runname}/${dataset.name}/${train_parameters.seed}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: logs/${mlflow_runname}/${dataset.name}/${train_parameters.seed}
+    subdir: ${now:%Y-%m-%d_%H-%M-%S}

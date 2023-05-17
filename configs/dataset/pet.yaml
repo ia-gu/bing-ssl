@@ -1,0 +1,7 @@
+name: pets
+budget: 0
+rounds: 1
+initial_points: 1000
+classes: 102
+train: /localdata/pets/train
+test: /localdata/pets/test
